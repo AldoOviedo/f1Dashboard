@@ -1,0 +1,14 @@
+.driver-card {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    gap: 20px;
+
+}
+
+.driver-card-main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: bisque;
+}

@@ -1,0 +1,35 @@
+
+
+.text-main {
+
+    background-color: aqua;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: blueviolet;
+    width: 200px;
+}
+
+.text-box {
+    background-color: orange;
+    width: 400px;
+
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+
+}
