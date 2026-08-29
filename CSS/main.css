@@ -21,7 +21,7 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);     /* soft shadow = it floats above */
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: black;
+    color: white;
 
 }
 
@@ -36,27 +36,39 @@
 body {
     background-color: #232330;
 
+
 }
 
 .race-grid-main {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 120em;
+    margin: 0 auto;
+    -ms-grid-column-align: center;
+    grid-column: auto;
     justify-content: center;
-    height: 2000px;
+    justify-items: center;
     gap: 30px;
+    padding: 50px;
+}
+
+.race-grid-centering {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .race-grid-content {
-    margin-top: 200px;
-    height: 250px;
-    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), rgba(0, 161, 155, 0.6));
-    width: 300px;
+    margin-top: 60px;
+    height: 15em;
+    width: 15em;
     border-radius: 10px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .driver-header {
@@ -67,13 +79,13 @@ body {
 }
 
 .driver-header-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: aquamarine;
-    height: 40px;
-    width: 40px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
+    background-size: cover;        /* ← fill the circle, don't squish */
+    background-position: center;   /* ← center the face in the circle */
+    background-repeat: no-repeat;
+    flex-shrink: 0;
 }
 
 .driver-header-name {
@@ -91,9 +103,8 @@ body {
 
 .driver-team-name {
     color: azure;
-    background-color: #2e6150;
     width: 100px;
-    height: 25px;
+    height: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -116,4 +127,41 @@ body {
 .nav-link:visited {
     color: azure;
     text-decoration: none;
+}
+
+.stats-box {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);     /* soft shadow = it floats above */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    height: 7.5em;
+
+}
+
+.stats-position-box-divider {
+
+}
+
+.stats-driver-points {
+    font-size: 1.5em;
+    color: whitesmoke;
+}
+
+.stats-driver-position {
+    color: whitesmoke;
+    font-size: 3em;
+}
+
+.driver-header-name-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

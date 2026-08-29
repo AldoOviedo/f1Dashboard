@@ -26,3 +26,27 @@ let drivers =  await getDrivers();
 
 console.log(drivers);
 
+export async function  getRawData() {
+    let response = await fetch('https://api.jolpi.ca/ergast/f1/current/driverStandings/');
+    let data = await response.json();
+    let raw = data.MRData;
+    console.log(raw);
+}
+
+export async function getStandings() {
+    let response = await fetch('https://api.jolpi.ca/ergast/f1/current/driverStandings/');
+    let data = await response.json();
+    let raw = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    console.log(raw);
+    return raw.map(entry => {
+        console.log("permanentNumber raw:", entry.Driver.permanentNumber);   // ← what does THIS show?
+        return {
+            name: entry.Driver.givenName + " " + entry.Driver.familyName,
+            team: entry.Constructors[0].name,
+            points: Number(entry.points),
+            position: Number(entry.position),
+            driverNumber: Number(entry.Driver.permanentNumber)
+        };
+    });
+
+}
