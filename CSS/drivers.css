@@ -1,8 +1,11 @@
 .driver-card {
     display: flex;
     flex-direction: row;
-    width: 300px;
     gap: 20px;
+    width: min-content;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 10px;
 
 }
 
@@ -11,4 +14,17 @@
     flex-direction: column;
     gap: 40px;
     background-color: bisque;
+}
+
+.driver-team {
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.stats-box-divider {
+    width: 1em;
+    height: 10em;
+    background-color: rgb(166 104 221 / 0.51);
+    backdrop-filter: blur(3px);
 }

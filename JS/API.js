@@ -39,7 +39,6 @@ export async function getStandings() {
     let raw = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
     console.log(raw);
     return raw.map(entry => {
-        console.log("permanentNumber raw:", entry.Driver.permanentNumber);   // ← what does THIS show?
         return {
             name: entry.Driver.givenName + " " + entry.Driver.familyName,
             team: entry.Constructors[0].name,

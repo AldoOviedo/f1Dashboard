@@ -28,48 +28,16 @@ function getOrdinals(number) {
     let lastOne = number % 10;
 
     if (lastTwo === 11 || lastTwo === 12 || lastTwo === 13) {
-        return number + "th";
+        return "th";
     }
 
-    if (lastOne === 1) return number + "st";
-    if (lastOne === 2) return number + "nd";
-    if (lastOne === 3) return number + "rd";
-    return number + "th";
-
-
+    if (lastOne === 1) return "st";
+    if (lastOne === 2) return "nd";
+    if (lastOne === 3) return "rd";
+    return "th";
 }
-
 
 let gridMain = document.getElementById("race-grid");
-
-
-async function renderDriverInfo(){
-    let drivers = await getCombinedStandings();
-
-    for (let driver of drivers) {
-
-        let contentBox = document.getElementById("race-grid-content");
-        let driverHeader = document.createElement("div");
-        let driverHeaderImage = document.createElement("div");
-        let driverHeaderNameDiv = document.createElement("div");
-        let driverHeaderName = document.createElement("div");
-
-        contentBox.className = "race-grid-content";
-        driverHeader.className = "driver-header";
-        driverHeaderImage.className = "driver-header-image";
-        driverHeaderName.className = "driver-header-name";
-        driverHeaderNameDiv.className = "driver-header-name-div";
-
-        driverHeaderImage.style.backgroundImage = driver.driverImage;
-        driverHeaderName.innerText = driver.firstName + ' ' + driver.lastName;
-
-
-        contentBox.appendChild(driverHeaderImage);
-        contentBox.appendChild(driverHeaderName);
-        gridMain.appendChild(contentBox);
-
-    }
-}
 
 async function loadStandingInfo(){
 
@@ -79,7 +47,6 @@ async function loadStandingInfo(){
      for (let standing of standings) {
 
          let contentBox = document.createElement("div");
-         contentBox.id = "race-grid-content";
          contentBox.className = "race-grid-content";
          contentBox.style.background = `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #${standing.teamColor}99)`;
 
@@ -107,7 +74,7 @@ async function loadStandingInfo(){
 
 
          driverTeamName.innerText = standing.team;
-         driverTeamName.style.backgroundColor = "#" + standing.teamColor
+         driverTeamMain.style.backgroundColor = "#" + standing.teamColor
          driverTeamMain.appendChild(driverTeamName);
          driverHeaderNameDiv.appendChild(driverHeaderName);
          driverHeaderNameDiv.appendChild(driverTeamMain);
@@ -117,7 +84,9 @@ async function loadStandingInfo(){
          let positionBox = document.createElement("div");
          let positionText = document.createElement("div");
          let positionDivider = document.createElement("div");
+         let driverPositionSmallBox = document.createElement("div");
          let driverPosition = document.createElement("div");
+         let driverPositionOrdinal = document.createElement("div");
          let statBoxDivider = document.createElement("div");
          let driverPointsBox = document.createElement("div");
          let driverPointsBoxText = document.createElement("div");
@@ -130,22 +99,27 @@ async function loadStandingInfo(){
          positionBox.className = "stats-position-box";
          positionText.className = "stats-position-box-text";
          positionDivider.className = "stats-position-box-divider";
+         driverPositionSmallBox.className = "driver-position-small-box";
          driverPosition.className = "stats-driver-position";
+         driverPositionOrdinal.className = "driver-position-ordinal";
 
          statBoxDivider.className = "stats-box-divider";
 
-         driverPointsBox.className = "stats-driver-position-box";
-         driverPointsBoxText.className = "stats-driver-position-box-text";
-         driverPointsBoxDivider.className = "stats-driver-position-box-divider";
+         driverPointsBox.className = "stats-driver-points-box";
+         driverPointsBoxText.className = "stats-driver-points-box-text";
+         driverPointsBoxDivider.className = "stats-driver-points-box-divider";
          driverPoints.className = "stats-driver-points";
 
          positionText.innerText = "Position";
          driverPointsBoxText.innerText = "Points";
          driverPoints.innerText = standing.points;
-         driverPosition.innerText = getOrdinals(standing.position);
+         driverPosition.innerText = standing.position;
+         driverPositionOrdinal.innerText = getOrdinals(standing.position);
          positionBox.appendChild(positionText);
          positionBox.appendChild(positionDivider);
-         positionBox.appendChild(driverPosition);
+         driverPositionSmallBox.appendChild(driverPosition);
+         driverPositionSmallBox.appendChild(driverPositionOrdinal);
+         positionBox.appendChild(driverPositionSmallBox);
 
          statsBox.appendChild(positionBox);
          statsBox.appendChild(statBoxDivider);
@@ -172,11 +146,7 @@ loadStandingInfo();
 
 getStandings();
 
-let combined = await getCombinedStandings();
-console.log("combined array");
-console.log(combined);
 
-console.log(getOrdinals(1));
 
 
 

@@ -2,7 +2,13 @@
     padding-right: 5px;
     padding-left: 5px;
     opacity: 100%;
+    color: white;
 
+}
+
+.nav-link {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -22,10 +28,11 @@
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
+    z-index: 1000;
 
 }
 
-.flaoting-main {
+.floating-main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,15 +48,14 @@ body {
 
 .race-grid-main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     max-width: 120em;
     margin: 0 auto;
     -ms-grid-column-align: center;
     grid-column: auto;
     justify-content: center;
     justify-items: center;
-    gap: 30px;
-    padding: 50px;
+    gap: 40px;
 }
 
 .race-grid-centering {
@@ -61,8 +67,8 @@ body {
 
 .race-grid-content {
     margin-top: 60px;
-    height: 15em;
-    width: 15em;
+    height: 18em;
+    width: 18em;
     border-radius: 10px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -75,7 +81,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 }
 
 .driver-header-image {
@@ -93,12 +99,15 @@ body {
     font-family: 'Formula1', sans-serif;
     font-weight: bold;
     letter-spacing: 2px;
+    text-align: center;
 
 }
 
 .driver-team-main {
     display: flex;
-    justify-content: flex-start;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .driver-team-name {
@@ -110,7 +119,6 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    border-radius: 10px;
     font-family: 'Formula1', sans-serif;
     font-weight: bold;
 
@@ -135,6 +143,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    align-content: center;
     gap: 20px;
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(3px);
@@ -142,21 +151,91 @@ body {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 10px;
-    height: 7.5em;
+    height: 10.5em;
 
+}
+
+.stats-position-box {
+    width: 6em;
+    height: 6em;
+    text-align: center;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.stats-position-box-text {
+    color: whitesmoke;
+    font-size: 1.5em;
 }
 
 .stats-position-box-divider {
+    width: 7em;
+    height: .15em;
+    background-color: rgb(179 179 179 / 0.51);
+    backdrop-filter: blur(3px);
+    border-radius: .1em;
 
+}
+
+.stats-driver-points-box-divider {
+    width: 7em;
+    height: .15em;
+    background-color: rgb(179 179 179 / 0.51);
+    backdrop-filter: blur(3px);
+    border-radius: .1em;
+
+}
+
+
+.driver-position-small-box {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+}
+
+.driver-position-ordinal {
+    color: rgb(245 245 245 / 0.75);
+    font-size: 2em;
+}
+
+.stats-driver-points-box {
+    width: 6em;
+    height: 6em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.stats-driver-points-box-text {
+    color: whitesmoke;
+    font-size: 1.5em;
+}
+
+
+.stats-box-divider {
+    width: .15em;
+    height: 8em;
+    background-color: rgb(179 179 179 / 0.51);
+    backdrop-filter: blur(3px);
+    border-radius: .1em;
 }
 
 .stats-driver-points {
-    font-size: 1.5em;
-    color: whitesmoke;
+    font-size: 3em;
+    color: rgb(245 245 245 / 0.95);
+    margin-top: .22em;
+
 }
 
 .stats-driver-position {
-    color: whitesmoke;
+    color: rgb(245 245 245 / 0.95);
     font-size: 3em;
 }
 
@@ -164,4 +243,114 @@ body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+@media (max-width: 600px) {
+    .race-grid-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));  /* 2 cards per row */
+        gap: 15px;
+        padding: 15px;
+        margin-top: 50px;
+    }
+
+    .race-grid-content {
+        width: 100%;
+        height: auto;        /* size to content */
+        margin-top: 0;
+        display: flex;
+
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .driver-header {
+        height: 30%;
+        gap: 10px;    /* reasonable gap, not too much */
+        align-items: center;
+    }
+
+    .driver-header-name-div {
+        flex: 1;       /* name area fills remaining space */
+        min-width: 0;
+
+    }
+
+    .driver-header-image {
+        width: 45px;
+        height: 45px;
+    }
+
+    .driver-header-name {
+        font-size: 0.73em;
+        letter-spacing: 1px;
+    }
+
+    .driver-team-name {
+        width: auto;         /* was 100px — let it shrink */
+        font-size: 0.7em;
+    }
+
+    .driver-team-main {
+        padding: 4px;
+    }
+
+    .stats-box {
+        width: auto;
+        height: auto;
+        padding: 8px;
+        gap: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .stats-position-box,
+    .stats-driver-points-box {
+        width: auto;         /* was 6em — let them fit */
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .stats-position-box-text,
+    .stats-driver-points-box-text {
+        font-size: 0.8em;
+    }
+
+    .stats-driver-position{
+        font-size: 1.6em;    /* smaller numbers */
+    }
+
+    .stats-driver-points {
+        font-size: 1.6em;
+    }
+
+    .stats-position-box-divider,
+    .stats-driver-points-box-divider {
+        width: 3em;         /* was 5em — shrink the underlines */
+    }
+
+    .stats-box-divider {
+        height: 4em;
+        width: .1em;
+    }
+
+    .driver-position-small-box {
+        display: flex;
+        flex-direction: row;
+        margin-top: 5px;
+    }
+
+    .driver-position-ordinal {
+        color: rgb(245 245 245 / 0.75);
+        font-size: 1em;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
 }
