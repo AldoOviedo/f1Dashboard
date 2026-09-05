@@ -257,10 +257,16 @@ body {
 
 @media (max-width: 600px) {
     .race-grid-main {
+
+    }
+
+    .standing-grid-main {
+
         grid-template-columns: repeat(2, minmax(0, 1fr));  /* 2 cards per row */
         gap: 15px;
         padding: 15px;
         margin-top: 50px;
+
     }
 
     .race-grid-content {
