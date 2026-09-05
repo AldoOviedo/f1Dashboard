@@ -6,23 +6,24 @@
     <title>F1 Dashboard 1.0</title>
     <link rel="stylesheet" href="CSS/main.css">
     <link href="https://cdnfonts.com" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/drivers.css">
 </head>
 <body>
 
 <header class="header">
     <div class="header-content">
         <div class="floating-main" draggable="true">
-            <div class="floating-link-body">
-                <div class="floating-link-content"><a href="index.html" class="nav-link">Home</a></div>
-                | <div class="floating-link-content"><a href="standings.html" class="nav-link">Standings</a></div>
-                | <div class="floating-link-content"><a href="drivers.html" class="nav-link">Drivers</a></div>
-                | <div class="floating-link-content"><a href="races.html" class="nav-link">Races</a></div>
+            <div class="floating-link-body" id="nav-container">
+                <div class="floating-link-content"><a href="#" class="nav-link" data-page="home">Home</a></div>
+                | <div class="floating-link-content"><a href="standings.html" class="nav-link" data-page="standings">Standings</a></div>
+                | <div class="floating-link-content"><a href="#" class="nav-link" data-page="drivers">Drivers</a></div>
+                | <div class="floating-link-content"><a href="races.html" class="nav-link" data-page="races">Races</a></div>
             </div>
         </div>
     </div>
 </header>
 
-    <div class="race-grid-main" id="race-grid">
+    <div class="race-grid-main" id="outlet">
     </div>
 
 <script type="module" src="index.js"></script>
