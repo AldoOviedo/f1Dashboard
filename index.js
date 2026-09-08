@@ -7,18 +7,14 @@ import {renderRaces} from "./JS/races.js";
 let navContainer = document.getElementById("nav-container");
 let currentPage = "home";
 
-function navigateTo(page) {
-    currentPage = page;
-    router();
-}
-
 router();
 
 navContainer.addEventListener("click", function (event){
     let page = event.target.dataset.page;
     if (page){
         event.preventDefault();
-      navigateTo(page);
+        currentPage = page;
+        router();
     }
 })
 
@@ -26,7 +22,7 @@ async function router(){
     let outlet = document.getElementById("outlet");
     outlet.innerHTML = "";
     if (currentPage === "home") {
-        outlet.appendChild(renderHome(navigateTo));
+        outlet.appendChild(renderHome());
         console.log("home link clicked" + currentPage);
     } else if (currentPage === "drivers") {
         outlet.appendChild(await driverRender());
@@ -37,9 +33,6 @@ async function router(){
     }
 
 }
-
-
-
 
 
 

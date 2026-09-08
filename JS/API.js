@@ -55,5 +55,3 @@ export async function getSeasonCalender(){
     return data
 }
 
-let season = await getSeasonCalender();
-console.log("season renders" + season);

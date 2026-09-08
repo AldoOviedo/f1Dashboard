@@ -1,5 +1,5 @@
 import {createContainer, createElements} from "./elements.js";
-import {getSeasonCalender} from "./API";
+import {getSeasonCalender} from "./API.js";
 
 export function renderRaces(){
     let container = createContainer("div", "race-container");
