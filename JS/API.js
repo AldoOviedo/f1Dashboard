@@ -22,9 +22,7 @@ export async function getDrivers() {
     return driverArray;
 }
 
-let drivers =  await getDrivers();
 
-console.log(drivers);
 
 export async function  getRawData() {
     let response = await fetch('https://api.jolpi.ca/ergast/f1/current/driverStandings/');
@@ -49,3 +47,13 @@ export async function getStandings() {
     });
 
 }
+
+export async function getSeasonCalender(){
+    let response = await fetch('https://api.jolpi.ca');
+    let data = await response.json();
+    console.log(data.valueOf());
+    return data
+}
+
+let season = await getSeasonCalender();
+console.log("season renders" + season);

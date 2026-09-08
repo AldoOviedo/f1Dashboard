@@ -47,6 +47,11 @@ body {
 }
 
 .race-grid-main {
+    margin-top: 4em;
+}
+
+.standing-grid-main {
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     max-width: 120em;
@@ -56,7 +61,9 @@ body {
     justify-content: center;
     justify-items: center;
     gap: 40px;
+
 }
+
 
 .race-grid-centering {
     display: flex;
@@ -250,10 +257,16 @@ body {
 
 @media (max-width: 600px) {
     .race-grid-main {
+
+    }
+
+    .standing-grid-main {
+
         grid-template-columns: repeat(2, minmax(0, 1fr));  /* 2 cards per row */
         gap: 15px;
         padding: 15px;
         margin-top: 50px;
+
     }
 
     .race-grid-content {

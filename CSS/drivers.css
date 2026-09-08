@@ -10,10 +10,18 @@
 }
 
 .driver-card-main {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+    max-width: 120em;
+    margin: 0 auto;
+    -ms-grid-column-align: center;
+    grid-column: auto;
+    justify-content: center;
+    justify-items: center;
     gap: 40px;
-    background-color: bisque;
+}
+
+.driver-race-grid-main {
 }
 
 .driver-team {
@@ -22,9 +30,3 @@
     border-radius: 10px;
 }
 
-.stats-box-divider {
-    width: 1em;
-    height: 10em;
-    background-color: rgb(166 104 221 / 0.51);
-    backdrop-filter: blur(3px);
-}

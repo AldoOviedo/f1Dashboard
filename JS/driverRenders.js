@@ -1,38 +1,24 @@
 import {createContainer, createElements} from "./elements.js";
+import {getDrivers} from "./API.js";
 
-export async function renderDrivers(drivers) {
-    let container = document.createElement("section");
 
-    console.log(drivers[0]);
+export async function driverRender() {
 
-    for (let driver of drivers){
-        console.log(driver);
-        let driverCard = document.createElement("div");
-        let driverNameDiv = document.createElement("div");
-        let driverTeamDiv = document.createElement("div");
-
-        driverNameDiv.innerText = driver.firstName + " " + driver.lastName;
-        driverTeamDiv.innerText = driver.teamName;
-        driverCard.appendChild(driverNameDiv);
-        driverCard.appendChild(driverTeamDiv);
-        driverCard.className = "driver-card";
-        driverCard.style.backgroundColor = "#" + driver.teamColor;
-        container.className = "driver-card-main";
-        container.appendChild(driverCard);
-    }
-    return container;
-}
-
-export function driverRender(drivers) {
+    let drivers = await getDrivers();
     let container = document.createElement("section");
 
     for (let driver of drivers) {
 
         let driverCard = createContainer("div", "driver-card");
-        let driverNameDiv = createElements("div", "driver-name", driver.firstName);
+        let driverImage = createContainer("div", "driver-image");
+        let driverNameDiv = createElements("div", "driver-name", driver.firstName + " " + driver.lastName);
         let driverTeamDiv = createElements("div", "driver-team", driver.teamName);
+        driverImage.className = "driver-header-image";
+        driverImage.style.backgroundImage = `url('${driver.driverImage}')`;
+        driverCard.style.background = `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #${driver.teamColor}99)`;
         driverTeamDiv.style.backgroundColor = "#" + driver.teamColor;
         driverCard.appendChild(driverNameDiv);
+        driverCard.appendChild(driverImage);
         driverCard.appendChild(driverTeamDiv);
         container.className = "driver-card-main";
         container.appendChild(driverCard);
@@ -42,3 +28,4 @@ export function driverRender(drivers) {
     return container;
 
 }
+
