@@ -48,10 +48,54 @@ export async function getStandings() {
 
 }
 
-export async function getSeasonCalender(){
-    let response = await fetch('https://api.jolpi.ca');
-    let data = await response.json();
-    console.log(data.valueOf());
-    return data
+export async function getSeasonData(){
+
+    let response = await fetch('https://api.jolpi.ca/ergast/f1/current/');
+    let raw = await response.json();
+    let data = raw.MRData.RaceTable.Races;
+    let filteredArray = [];
+
+    for (let race of data ) {
+
+        filteredArray.push({
+            race: race.raceName,
+            track: race.Circuit.circuitId,
+            circuit: race.Circuit.circuitName,
+            date: race.date,
+            })
+
+    }
+    return filteredArray;
 }
+
+export async function getResults(){
+    let data = await fetch("https://f1api.dev/api/2026");
+    let raw = await data.json();
+    return raw.races.map(race => ({
+        raceName: race.raceName,
+        round: race.round,
+        date: race.schedule.race.date,
+        circuit: race.circuit.circuitName,
+        country: race.circuit.country,
+        winner: race.winner,
+        isPast: race.winner !== null
+    }));
+}
+
+export async function getFirstPlace(){
+    let results = await getResults();
+
+    let winners = [];
+
+    for (let result of results){
+        winners.push({
+            winner: result.winner
+        })
+    }
+    return winners;
+}
+
+
+
+
 

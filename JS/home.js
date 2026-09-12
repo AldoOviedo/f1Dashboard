@@ -1,4 +1,5 @@
 import {createContainer, createElements} from "./elements.js";
+import {getFirstPlace,getResults} from "./API.js";
 
 export function renderHome(navigateTo){
     let container = createContainer("div", "home-container");
@@ -9,3 +10,10 @@ export function renderHome(navigateTo){
     container.appendChild(standingsCard);
     return container;
 }
+
+let winner = await getFirstPlace();
+
+let pastRaces = await getResults();
+
+console.log(winner);
+console.log(pastRaces);

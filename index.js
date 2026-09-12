@@ -1,7 +1,7 @@
 import {loadStandingInfo} from "./JS/standings.js";
-import {driverRender} from "./JS/driverRenders.js";
+import {driverRender, showDrivers} from "./JS/driverRenders.js";
 import {renderHome} from "./JS/home.js";
-import {renderRaces} from "./JS/races.js";
+import {renderRaces, showRaces} from "./JS/races.js";
 
 
 let navContainer = document.getElementById("nav-container");
@@ -13,23 +13,27 @@ navContainer.addEventListener("click", function (event){
     let page = event.target.dataset.page;
     if (page){
         event.preventDefault();
-        currentPage = page;
-        router();
+        navigateTo(page);
     }
-})
+});
+
+function navigateTo(page) {
+    currentPage = page;
+    router();
+}
 
 async function router(){
     let outlet = document.getElementById("outlet");
     outlet.innerHTML = "";
     if (currentPage === "home") {
-        outlet.appendChild(renderHome());
+        outlet.appendChild(renderHome(navigateTo));
         console.log("home link clicked" + currentPage);
     } else if (currentPage === "drivers") {
-        outlet.appendChild(await driverRender());
+        outlet.appendChild(await showDrivers());
     } else if (currentPage === "standings") {
         outlet.appendChild(await loadStandingInfo());
     } else if (currentPage === "races") {
-        outlet.appendChild(renderRaces());
+        outlet.appendChild(await showRaces());
     }
 
 }

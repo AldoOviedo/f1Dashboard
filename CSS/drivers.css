@@ -1,11 +1,14 @@
 .driver-card {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
-    width: min-content;
+    width: 20em;
     background-color: grey;
     padding: 20px;
     border-radius: 10px;
+
 
 }
 
@@ -25,8 +28,25 @@
 }
 
 .driver-team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
 }
+
+.driver-name {
+    color: white;
+}
+
+.driver-number {
+    color: white;
+    font-size: 3em;
+    font-style: italic;
+}
+
+
+
 

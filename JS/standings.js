@@ -114,9 +114,6 @@ async function getCombinedStandings() {
         getDrivers()
     ]);
 
-    console.log("standing number:", standings);
-    console.log("driver numbers:", drivers.map(d => d.driverNumber));
-
     return standings.map(standing => {
         let matchingDriver = drivers.find(driver =>
             driver.driverNumber === standing.driverNumber);

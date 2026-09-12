@@ -1,0 +1,40 @@
+.race-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 120em;
+    margin: 0 auto;
+    -ms-grid-column-align: center;
+    grid-column: auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 40px;
+
+}
+
+.race-card {
+    background-color: rgb(128 128 128 / 0.61);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 40em;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.first-divider {
+    width: .15em;
+    height: 8em;
+    background-color: rgb(179 179 179 / 0.51);
+    backdrop-filter: blur(3px);
+    border-radius: .1em;
+}
+
+.second-divider {
+    width: .15em;
+    height: 8em;
+    background-color: rgb(179 179 179 / 0.51);
+    backdrop-filter: blur(3px);
+    border-radius: .1em;
+}
