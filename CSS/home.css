@@ -2,3 +2,67 @@
     background-color: purple;
     padding: 3em;
 }
+
+.first-place-card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(128 128 128 / 0.73);
+    box-shadow-blur: 3px;
+    padding: 30px;
+    border-radius: 10px;
+    width: min-content;
+    gap: 15px;
+}
+
+.current-winner-text {
+
+    text-align: center;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
+
+}
+
+.home-title {
+    color: white;
+    text-align: center;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.next-race-name {
+    color: white;
+    text-align: center;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
+    background-color: grey;
+    width: 40em;
+}
+
+.test-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.driver-card{
+    width: min-content;
+}
+
+.driver-image {
+    display: flex;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-size: cover;        /* ← fill the circle, don't squish */
+    background-position: center;   /* ← center the face in the circle */
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}

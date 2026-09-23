@@ -10,7 +10,7 @@ export function driverRender(drivers) {
 
         let driverCard = createContainer("div", "driver-card");
         let driverImage = createContainer("div", "driver-image");
-        let driverNameDiv = createElements("div", "driver-name", driver.firstName + " " + driver.lastName);
+        let driverNameDiv = createElements("div", "driver-name", driver.name);
         let driverNumber= createElements("div", "driver-number", driver.driverNumber);
         let driverTeamDiv = createElements("div", "driver-team", driver.teamName);
         let driverTeamNameContainer = createContainer("div", "team-name-container");

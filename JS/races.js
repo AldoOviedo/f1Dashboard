@@ -1,5 +1,5 @@
-import {createContainer, createElements} from "./elements.js";
-import {getResults} from "./API.js";
+import {createContainer, createElements, createRaceCard} from "./elements.js";
+import {getRacesWithWinners, getResults} from "./API.js";
 
 export function renderRaces(races){
     let container = createContainer("div", "race-container");
@@ -24,10 +24,22 @@ export function renderRaces(races){
     return container;
 }
 
-export async function showRaces(){
-    let races = await getResults();
-    return renderRaces(races);
+export function renderRacesWithWinners(races) {
+
+    let container = createContainer("div", "race-container");
+    for (let race of races){
+        container.appendChild(createRaceCard(race));
+    }
+    return container;
 }
+
+export async function showRaces(){
+    let races = await getRacesWithWinners();
+    return renderRacesWithWinners(races);
+}
+
+let races = await getResults();
+console.log(races);
 
 
 

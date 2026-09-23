@@ -151,7 +151,7 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap: 20px;
+    gap: 18px;
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(3px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);     /* soft shadow = it floats above */
@@ -163,8 +163,8 @@ body {
 }
 
 .stats-position-box {
-    width: 6em;
-    height: 6em;
+    width: 5.8em;
+    height: 5.8em;
     text-align: center;
     flex-direction: column;
     align-content: center;
@@ -175,7 +175,9 @@ body {
 
 .stats-position-box-text {
     color: whitesmoke;
-    font-size: 1.5em;
+    font-size: 1.4em;
+    font-family: 'Formula1', sans-serif;
+    letter-spacing: 1px;
 }
 
 .stats-position-box-divider {
@@ -200,7 +202,7 @@ body {
 .driver-position-small-box {
     display: flex;
     flex-direction: row;
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 .driver-position-ordinal {
@@ -209,8 +211,8 @@ body {
 }
 
 .stats-driver-points-box {
-    width: 6em;
-    height: 6em;
+    width: 5.8em;
+    height: 5.8em;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -222,7 +224,9 @@ body {
 
 .stats-driver-points-box-text {
     color: whitesmoke;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    font-family: 'Formula1', sans-serif;
+    letter-spacing: 1px;
 }
 
 
@@ -235,7 +239,7 @@ body {
 }
 
 .stats-driver-points {
-    font-size: 3em;
+    font-size: 2.8em;
     color: rgb(245 245 245 / 0.95);
     margin-top: .22em;
 

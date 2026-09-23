@@ -9,26 +9,18 @@ export async function getDrivers() {
 
     for (let driver of drivers){
         driverArray.push({
-            firstName: driver.first_name,
+            name: driver.first_name + " " + driver.last_name,
             lastName: driver.last_name,
             driverNumber: driver.driver_number,
             teamName: driver.team_name,
             teamColor: driver.team_colour,
-            driverImage: driver.headshot_url
+            driverImage: driver.headshot_url,
+            acronym: driver.name_acronym
 
         });
 
     }
     return driverArray;
-}
-
-
-
-export async function  getRawData() {
-    let response = await fetch('https://api.jolpi.ca/ergast/f1/current/driverStandings/');
-    let data = await response.json();
-    let raw = data.MRData;
-    console.log(raw);
 }
 
 export async function getStandings() {
@@ -48,26 +40,6 @@ export async function getStandings() {
 
 }
 
-export async function getSeasonData(){
-
-    let response = await fetch('https://api.jolpi.ca/ergast/f1/current/');
-    let raw = await response.json();
-    let data = raw.MRData.RaceTable.Races;
-    let filteredArray = [];
-
-    for (let race of data ) {
-
-        filteredArray.push({
-            race: race.raceName,
-            track: race.Circuit.circuitId,
-            circuit: race.Circuit.circuitName,
-            date: race.date,
-            })
-
-    }
-    return filteredArray;
-}
-
 export async function getResults(){
     let data = await fetch("https://f1api.dev/api/2026");
     let raw = await data.json();
@@ -77,23 +49,89 @@ export async function getResults(){
         date: race.schedule.race.date,
         circuit: race.circuit.circuitName,
         country: race.circuit.country,
+        city: race.circuit.city,
         winner: race.winner,
         isPast: race.winner !== null
     }));
 }
 
-export async function getFirstPlace(){
+export async function getLastWinner(){
     let results = await getResults();
-
-    let winners = [];
-
-    for (let result of results){
-        winners.push({
-            winner: result.winner
-        })
-    }
-    return winners;
+    let lastRace = results.findLast(race => race.isPast);
+    return lastRace ? lastRace.winner : null;
 }
+
+export async function getFirstPlace(){
+    let data = await getCombinedStandings();
+    return data[0];
+}
+
+export async function getNextRace(){
+    let races = await getResults();
+    return races.find(race => !race.isPast);
+}
+
+export async function getLastRace(){
+    let races = await getRacesWithWinners();
+    return races.findLast(race => race.isPast);
+}
+
+export async function getCombinedStandings() {
+    let [standings, drivers] = await Promise.all([
+        getStandings(),
+        getDrivers()
+    ]);
+
+    return standings.map(standing => {
+        let matchingDriver = drivers.find(driver =>
+            driver.driverNumber === standing.driverNumber);
+
+        return {
+            ...standing,
+            image: matchingDriver ? matchingDriver.driverImage : null,
+            teamColor: matchingDriver ? matchingDriver.teamColor : null
+        };
+
+    });
+}
+
+
+export function getOrdinals(number) {
+    let lastTwo = number % 100;
+    let lastOne = number % 10;
+
+    if (lastTwo === 11 || lastTwo === 12 || lastTwo === 13) {
+        return "th";
+    }
+
+    if (lastOne === 1) return "st";
+    if (lastOne === 2) return "nd";
+    if (lastOne === 3) return "rd";
+    return "th";
+}
+
+export async function getRacesWithWinners(){
+    let [races, drivers] = await Promise.all([getResults(), getDrivers()]);
+
+    return races.map(race => {
+        if (!race.winner) return race;
+
+        let match = drivers.find(d => d.acronym === race.winner.shortName);
+
+        return {
+            ...race,
+            winner: {
+                ...race.winner,
+                image:     match ? match.driverImage : null,
+                teamColor: match ? match.teamColor   : null,
+                name: match ? match.name : null,
+                team: match ? match.teamName : null
+            }
+        };
+    });
+}
+
+
 
 
 

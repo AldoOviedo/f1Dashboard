@@ -1,27 +1,93 @@
 .race-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     max-width: 120em;
     margin: 0 auto;
     -ms-grid-column-align: center;
     grid-column: auto;
     justify-content: center;
-    justify-items: center;
-    align-items: center;
     gap: 40px;
 
 }
 
-.race-card {
-    background-color: rgb(128 128 128 / 0.61);
-    backdrop-filter: blur(3px);
+.race-card-container {
+    flex-direction: column;
+    gap: 1em;
+    padding: 1.25em;
+    border-radius: 1em;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+
+}
+
+.race-card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1em;
+}
+
+.race-track-name {
+    font-size: .85em;
+    color: rgb(128 128 128 / 0.7);
+    width: 200%;
+}
+
+.race-date {
+    font-size: .70em;
+    color: rgb(128 128 128 / 0.7);
+}
+
+.race-round {
+    color: rgb(128 128 128 / 0.84);
+    font-size: 1.4em;
+}
+
+.race-winner-container {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    width: 40em;
-    padding: 20px;
-    border-radius: 10px;
+    gap: 1em;
+    margin-top: auto;
+    margin-bottom: 0;
+    height: min-content;
 }
+
+.race-info-container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+}
+
+.winner-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+}
+
+.winner-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-size: cover;        /* ← fill the circle, don't squish */
+    background-position: center;   /* ← center the face in the circle */
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+.winner-name {
+    color: white;
+}
+
+.winner-team-info {
+    color: white;
+    width: min-content;
+    padding: 0 .5em;
+    border-radius: 5px;
+}
+
 
 .first-divider {
     width: .15em;

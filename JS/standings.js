@@ -1,8 +1,9 @@
-import {getDrivers, getStandings} from "./API.js";
+import {getCombinedStandings, getOrdinals} from "./API.js";
+import {navigateTo} from "./router.js";
 
-export async function loadStandingInfo(){
+export async function loadStandingInfo(standings){
 
-    let standings = await getCombinedStandings();
+
 
     let gridContainer = document.createElement("div");
     gridContainer.className = "standing-grid-main";
@@ -13,6 +14,7 @@ export async function loadStandingInfo(){
 
 
         let contentBox = document.createElement("div");
+        contentBox.addEventListener("click", () => navigateTo("drivers"));
         contentBox.className = "race-grid-content";
         contentBox.style.background = `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #${standing.teamColor}99)`;
 
@@ -108,35 +110,13 @@ export async function loadStandingInfo(){
     return gridContainer;
 }
 
-async function getCombinedStandings() {
-    let [standings, drivers] = await Promise.all([
-        getStandings(),
-        getDrivers()
-    ]);
+export async function showStandings(){
+    let standings = await getCombinedStandings();
+    return loadStandingInfo(standings);
 
-    return standings.map(standing => {
-        let matchingDriver = drivers.find(driver =>
-            driver.driverNumber === standing.driverNumber);
-
-        return {
-            ...standing,
-            image: matchingDriver ? matchingDriver.driverImage : null,
-            teamColor: matchingDriver ? matchingDriver.teamColor : null
-        };
-
-    });
 }
 
-function getOrdinals(number) {
-    let lastTwo = number % 100;
-    let lastOne = number % 10;
+let standings = await getCombinedStandings();
 
-    if (lastTwo === 11 || lastTwo === 12 || lastTwo === 13) {
-        return "th";
-    }
+console.log(standings);
 
-    if (lastOne === 1) return "st";
-    if (lastOne === 2) return "nd";
-    if (lastOne === 3) return "rd";
-    return "th";
-}
