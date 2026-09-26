@@ -5,19 +5,6 @@ export function createElements(type,className,data){
 
     return element;
 }
-
-
-
-export function loadElements(){
-    let createdDiv  = createElements("div", "divTest", "hellppppo");
-
-    let dataDiv = createElements("div", "dataDiv", "data will go here");
-
-    let container = document.getElementById("tester");
-    container.appendChild(createdDiv);
-    container.appendChild(dataDiv);
-}
-
 export function createContainer(type, className){
     let container = document.createElement(type);
     container.className = className;
@@ -45,6 +32,37 @@ export function createDriverCard(driver){
     }
     return driverCard;
 }
+
+export function createLeaderCard(driver){
+    let leaderCard = createContainer("div", "leader-card");
+
+    if (driver.image){
+        let driverImage = createContainer("div", "driver-image");
+
+        driverImage.style.backgroundImage = `url('${driver.image}')`;
+        leaderCard.append(driverImage);
+    }
+
+    let leaderInfoContainer = createContainer("div","leader-info-container");
+
+    let leaderCardTitle = createElements("div", "leader-card-text", "Championship Leader");
+    let leaderName = createElements("div", "leader-card-name", driver.name);
+    let leaderTeam = createElements("div", "leader-team", driver.team);
+
+        leaderTeam.style.backgroundColor = "#" + driver.teamColor;
+
+    let driverPoints = createElements("div", "leader-card-points", driver.points);
+    let driverPointsText = createElements("div", "leader-card-points-text", "Points • P1");
+
+    leaderInfoContainer.append(leaderCardTitle, leaderName, leaderTeam, driverPoints, driverPointsText);
+    leaderCard.append(leaderInfoContainer);
+    leaderCard.style.background = `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #${driver.teamColor}99)`;
+
+    return leaderCard;
+
+
+}
+
 
 export function createRaceCard(race){
     let raceCard = createContainer("div", "race-card-container");
@@ -94,3 +112,57 @@ export function createRaceCard(race){
 
 }
 
+export function createLastRaceCard(race){
+
+    let lastRaceCard = createContainer("div", "last-race-card");
+
+    lastRaceCard.append(createElements("div", "last-race-title-main", "LAST RACE"));
+
+    let raceInfoContainer = createContainer("div", "last-race-info");
+
+    let lastRaceCity = createElements("div", "last-race-city", race.city);
+    let lastRaceTrackPlusRound = createElements("div", "last-race-track", `${race.circuit} • Round ${race.round}`);
+
+    raceInfoContainer.append(lastRaceCity,lastRaceTrackPlusRound);
+
+    let driverContainer = createContainer("div", "last-race-driver");
+    let lastRaceWInnerImage = createContainer("div", "last-race-driver-image");
+    lastRaceWInnerImage.style.backgroundImage = `url('${race.winner.image}')`;
+    driverContainer.append(lastRaceWInnerImage);
+
+    let driverInfoContainer = createContainer("div", "last-race-winner-driver-info");
+
+    let lastRaceDriverName = createElements("div", "last-race-driver-name", race.winner.name);
+    let lastRaceDriverTeam = createElements("div", "last-race-driver-team", race.winner.team);
+    lastRaceDriverTeam.style.backgroundColor = "#" + race.winner.teamColor;
+    driverInfoContainer.append(lastRaceDriverName,lastRaceDriverTeam);
+    driverContainer.appendChild(driverInfoContainer);
+
+    lastRaceCard.append(raceInfoContainer,driverContainer);
+    lastRaceCard.style.background = `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #${race.winner.teamColor}99)`;
+
+    return lastRaceCard;
+}
+
+export function createNextRace(race) {
+
+    let nextRaceCard = createContainer("div", "next-race-card");
+    nextRaceCard.append(createElements("div", "next-race-title-main", "NEXT RACE"));
+
+    let nextRaceInfoContainer = createContainer("div", "next-race-info-container");
+
+    let nextRaceCity = createElements("div", "next-race-city", race.city);
+    let nextRaceTrackPlusRound = createElements("div", "next-race-track", `${race.circuit} • Round ${race.round}`);
+
+    nextRaceInfoContainer.append(nextRaceCity,nextRaceTrackPlusRound);
+
+    let raceDate = createElements("div", "next-race-date", race.date);
+
+    nextRaceCard.style.background =  `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #3b4b71)`;
+
+    nextRaceCard.append(nextRaceInfoContainer, raceDate);
+
+    return nextRaceCard;
+
+
+}

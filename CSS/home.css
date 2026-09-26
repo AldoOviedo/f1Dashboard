@@ -46,16 +46,44 @@
     width: 40em;
 }
 
-.test-element {
-    display: flex;
+.races-container {
+   display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 2%;
+    width: 100%;
 }
 
-.driver-card{
-    width: min-content;
+.leader-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 50%;
+    height: 15em;
+    padding: 1em;
+    border-radius: 1em;
+    gap: 1em;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
 }
 
+.leader-team {
+    text-align: center;
+    padding: .125em .2em;
+    width: 6em;
+    border-radius: .4em;
+}
+
+
+.leader-info-container{
+    color: #d3d6d5;
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+}
 .driver-image {
     display: flex;
     height: 75px;
@@ -65,4 +93,91 @@
     background-position: center;   /* ← center the face in the circle */
     background-repeat: no-repeat;
     flex-shrink: 0;
+    border: .1em grey solid;
 }
+
+.leader-card-text {
+    font-size: .75em;
+}
+
+.leader-card-points {
+    font-size: 2em;
+}
+
+.leader-card-points-text {
+    font-size: .5em;
+}
+
+
+.last-race-card {
+    width: 25%;
+    height: 13em;
+    padding: 2em;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
+}
+
+.last-race-title-main {
+    color: grey;
+    font-size: .75em;
+}
+
+.last-race-info {
+    color: white;
+}
+
+.last-race-driver {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+
+.last-race-driver-image {
+    display: flex;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-size: cover;        /* ← fill the circle, don't squish */
+    background-position: center;   /* ← center the face in the circle */
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+    border: .1em grey solid;
+}
+
+.last-race-winner-driver-info {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    color: #d3d6d5;
+ }
+
+.last-race-driver-team {
+    text-align: center;
+    padding: .1em .3em;
+    border-radius: .8em;
+}
+
+.next-race-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 1em;
+    width: 25%;
+    height: 13em;
+    padding: 2em;
+    color: white;
+    border-radius: 3em;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
+}
+
+.next-race-title-main {
+    color: grey;
+    font-size: .75em;
+}
+

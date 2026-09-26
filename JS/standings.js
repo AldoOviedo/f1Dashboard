@@ -115,8 +115,3 @@ export async function showStandings(){
     return loadStandingInfo(standings);
 
 }
-
-let standings = await getCombinedStandings();
-
-console.log(standings);
-

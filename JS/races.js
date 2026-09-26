@@ -38,8 +38,5 @@ export async function showRaces(){
     return renderRacesWithWinners(races);
 }
 
-let races = await getResults();
-console.log(races);
-
 
 
