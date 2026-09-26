@@ -1,18 +1,4 @@
-.home-card {
-    background-color: purple;
-    padding: 3em;
-}
 
-.first-place-card {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(128 128 128 / 0.73);
-    box-shadow-blur: 3px;
-    padding: 30px;
-    border-radius: 10px;
-    width: min-content;
-    gap: 15px;
-}
 
 .current-winner-text {
 
@@ -37,14 +23,6 @@
     gap: 40px;
 }
 
-.next-race-name {
-    color: white;
-    text-align: center;
-    font-family: 'Formula1', sans-serif;
-    font-weight: bold;
-    background-color: grey;
-    width: 40em;
-}
 
 .races-container {
    display: flex;
@@ -65,7 +43,7 @@
     height: 15em;
     padding: 1em;
     border-radius: 1em;
-    gap: 1em;
+    gap: 2em;
     font-family: 'Formula1', sans-serif;
     font-weight: bold;
 }
@@ -86,26 +64,30 @@
 }
 .driver-image {
     display: flex;
-    height: 75px;
-    width: 75px;
+    height: 95px;
+    width: 95px;
     border-radius: 50%;
-    background-size: cover;        /* ← fill the circle, don't squish */
-    background-position: center;   /* ← center the face in the circle */
+
+    background-position: center;
     background-repeat: no-repeat;
     flex-shrink: 0;
     border: .1em grey solid;
 }
 
 .leader-card-text {
-    font-size: .75em;
+    font-size: 1em;
 }
 
-.leader-card-points {
+.leader-card-name {
     font-size: 2em;
 }
 
+.leader-card-points {
+    font-size: 2.5em;
+}
+
 .leader-card-points-text {
-    font-size: .5em;
+    font-size: 1em;
 }
 
 
@@ -122,12 +104,20 @@
 }
 
 .last-race-title-main {
-    color: grey;
+    color: #b1b1b1;
     font-size: .75em;
 }
 
 .last-race-info {
     color: white;
+    display: flex;
+    flex-direction: column;
+    gap: .3em;
+}
+
+.last-race-track {
+    color: grey;
+    font-size: .85em;
 }
 
 .last-race-driver {
@@ -171,13 +161,56 @@
     height: 13em;
     padding: 2em;
     color: white;
-    border-radius: 3em;
+    border-radius: 2em;
     font-family: 'Formula1', sans-serif;
     font-weight: bold;
 }
 
 .next-race-title-main {
-    color: grey;
+    color: #b1b1b1;
     font-size: .75em;
+}
+
+.next-race-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+}
+
+.next-race-track {
+    color: grey;
+    font-size: .85em;
+}
+
+.next-race-date{
+    font-size: 2em;
+    color: #b1b1b1;
+}
+
+
+@media (max-width: 600px) {
+    .home-container {
+        gap: 1.5em;
+        padding: 0 1em;
+    }
+
+    .leader-card {
+        width: 100%;
+        height: auto;
+        padding: 1.5em;
+    }
+
+    .races-container {
+        flex-direction: column;   /* stack last + next race */
+        gap: 1.25em;
+    }
+
+    .last-race-card,
+    .next-race-card {
+        width: 100%;              /* full width instead of 25% */
+        height: auto;             /* grow to fit content */
+        padding: 1.5em;
+        border-radius: 1.5em;
+    }
 }
 

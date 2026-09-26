@@ -121,7 +121,7 @@ export function createLastRaceCard(race){
     let raceInfoContainer = createContainer("div", "last-race-info");
 
     let lastRaceCity = createElements("div", "last-race-city", race.city);
-    let lastRaceTrackPlusRound = createElements("div", "last-race-track", `${race.circuit} • Round ${race.round}`);
+    let lastRaceTrackPlusRound = createElements("div", "last-race-track", `${race.circuit}`);
 
     raceInfoContainer.append(lastRaceCity,lastRaceTrackPlusRound);
 

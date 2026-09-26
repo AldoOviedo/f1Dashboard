@@ -171,6 +171,8 @@ body {
     justify-content: center;
     align-items: center;
     justify-items: center;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
 }
 
 .stats-position-box-text {
@@ -207,7 +209,10 @@ body {
 
 .driver-position-ordinal {
     color: rgb(245 245 245 / 0.75);
-    font-size: 2em;
+    margin-top: .5em;
+    font-size: 1.5em;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
 }
 
 .stats-driver-points-box {
@@ -220,6 +225,8 @@ body {
     justify-content: center;
     align-items: center;
     justify-items: center;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
 }
 
 .stats-driver-points-box-text {
