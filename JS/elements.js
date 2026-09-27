@@ -13,23 +13,24 @@ export function createContainer(type, className){
 
 export function createDriverCard(driver){
 
-    let driverCard = createContainer("div", "driver-card");
+    let driverCard = createContainer("div", "auto-driver-card");
 
+    let driverInfoContainer = createContainer("div", "auto-driver-card-info");
     let driverName = createElements("div", "auto-driver-name", driver.name);
+    let driverTeam = createElements("div", "auto-driver-team", driver.teamName);
+    driverTeam.style.backgroundColor = "#" + driver.teamColor;
+
+    driverInfoContainer.append(driverName,driverTeam);
+
+    let driverGraphicsContainer = createContainer("div", "auto-driver-graphics-container");
+    let driverImage = createContainer("div", "auto-driver-image");
+    driverImage.style.backgroundImage = `url('${driver.driverImage}')`;
     let driverNumber = createElements("div", "auto-driver-number", driver.driverNumber);
 
-    driverCard.append(driverName, driverNumber);
+    driverGraphicsContainer.append(driverImage, driverNumber);
+    driverCard.style.background = `radial-gradient(circle at top left, rgba(0, 0, 0, 0.75), #${driver.teamColor}99)`;
+    driverCard.append(driverInfoContainer, driverGraphicsContainer);
 
-    if (driver.points > 0){
-        let driverPoints = createElements("div", "driver-points", driver.points);
-        driverCard.appendChild(driverPoints);
-    }
-
-    if (driver.image){
-        let driverImage = createContainer("div", "driver-image");
-        driverImage.style.backgroundImage = `url('${driver.image}')`;
-        driverCard.appendChild(driverImage);
-    }
     return driverCard;
 }
 

@@ -1,4 +1,4 @@
-.driver-card {
+.auto-driver-card {
     position: relative;   /* numbers now position inside their own card */
     overflow: hidden;
     display: flex;
@@ -16,7 +16,17 @@
 
 }
 
-.driver-card-main {
+.auto-driver-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-size: cover;        /* ← fill the circle, don't squish */
+    background-position: center;   /* ← center the face in the circle */
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+.driver-card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     max-width: 120em;
@@ -31,7 +41,7 @@
 .driver-race-grid-main {
 }
 
-.driver-team {
+.auto-driver-team {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,11 +52,11 @@
     white-space: nowrap;
 }
 
-.driver-name {
+.auto-driver-name {
     color: white;
 }
 
-.driver-number {
+.auto-driver-number {
     position: absolute;
     right: 1rem;                          /* adjust until it sits behind the photo */
     top: 50%;
