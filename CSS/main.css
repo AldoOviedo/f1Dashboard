@@ -6,6 +6,23 @@
 
 }
 
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-error{
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    width: 30%;
+    padding: 3em;
+    border-radius: 1em;
+    border: 1em white solid;
+}
+
 .nav-link {
     position: relative;
     z-index: 1;

@@ -1,4 +1,6 @@
 .driver-card {
+    position: relative;   /* numbers now position inside their own card */
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8,6 +10,8 @@
     background-color: grey;
     padding: 20px;
     border-radius: 10px;
+    font-family: 'Formula1', sans-serif;
+    font-weight: bold;
 
 
 }
@@ -35,6 +39,7 @@
     color: white;
     padding: 10px;
     border-radius: 10px;
+    white-space: nowrap;
 }
 
 .driver-name {
@@ -42,9 +47,29 @@
 }
 
 .driver-number {
-    color: white;
-    font-size: 3em;
+    position: absolute;
+    right: 1rem;                          /* adjust until it sits behind the photo */
+    top: 50%;
+    transform: translateY(-50%);          /* vertically centered */
+    font-size: 6em;
     font-style: italic;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.18);     /* faint grey */
+    z-index: 0;
+}
+
+.driver-name,
+.driver-team {
+    position: relative;
+    z-index: 1;
+}
+
+.driver-card {
+    isolation: isolate;   /* the card becomes its own layering context */
+}
+
+.driver-number {
+    z-index: -1;          /* behind everything inside the card */
 }
 
 

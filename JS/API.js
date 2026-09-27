@@ -27,7 +27,6 @@ export async function getStandings() {
     let response = await fetch('https://api.jolpi.ca/ergast/f1/current/driverStandings/');
     let data = await response.json();
     let raw = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-    console.log(raw);
     return raw.map(entry => {
         return {
             name: entry.Driver.givenName + " " + entry.Driver.familyName,

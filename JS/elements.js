@@ -166,3 +166,10 @@ export function createNextRace(race) {
 
 
 }
+
+export function dataErrorDiv(error){
+    let errorContainer = createContainer("div", "error-container");
+
+    errorContainer.append(createElements("div", "data-error", `Sorry :( Failed to get data: error - ${error}`));
+    return errorContainer;
+}
