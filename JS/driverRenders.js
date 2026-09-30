@@ -20,7 +20,6 @@ export function driverRender(drivers) {
 
 export async function showDrivers(){
     let drivers = await getDrivers();
-    console.log("drivers", drivers);
     return driverRender(drivers);
 }
 

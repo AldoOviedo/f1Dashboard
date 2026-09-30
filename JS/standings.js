@@ -115,3 +115,4 @@ export async function showStandings(){
     return loadStandingInfo(standings);
 
 }
+

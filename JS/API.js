@@ -1,26 +1,49 @@
+let driversCache = null;   // now holds a promise, not an array
 
-export async function getDrivers() {
+export function getDrivers() {
+    if (driversCache) return driversCache;
 
-    let data = await fetch('https://api.openf1.org/v1/drivers?session_key=latest');
-    let drivers = await data.json();
+    async function load() {
+        let raw;
+
+        try {
+            let response = await fetch('https://api.openf1.org/v1/drivers?session_key=latest');
+            if (!response.ok) throw new Error(`OpenF1 returned ${response.status}`);
+            raw = await response.json();
+        } catch (error) {
+            console.warn("OpenF1 unavailable, using snapshot:", error);
+            try {
+                let response = await fetch('./data/drivers.json');
+                if (!response.ok) throw new Error(`Snapshot returned ${response.status}`);
+                raw = await response.json();
+            } catch (snapshotError) {
+                console.warn("Snapshot unavailable, rendering without photos:", snapshotError);
+                raw = [];
+            }
+        }
+
+        let driverArray = [];
+        for (let driver of raw) {
+            driverArray.push({
+                name: driver.first_name + " " + driver.last_name,
+                lastName: driver.last_name,
+                driverNumber: driver.driver_number,
+                teamName: driver.team_name,
+                teamColor: driver.team_colour,
+                driverImage: driver.headshot_url,
+                acronym: driver.name_acronym
+            });
+        }
 
 
-    let driverArray = [];
+        if (driverArray.length === 0) driversCache = null;
 
-    for (let driver of drivers){
-        driverArray.push({
-            name: driver.first_name + " " + driver.last_name,
-            lastName: driver.last_name,
-            driverNumber: driver.driver_number,
-            teamName: driver.team_name,
-            teamColor: driver.team_colour,
-            driverImage: driver.headshot_url,
-            acronym: driver.name_acronym
-
-        });
-
+        return driverArray;
     }
-    return driverArray;
+
+
+    driversCache = load();
+    return driversCache;
 }
 
 export async function getStandings() {
@@ -87,8 +110,8 @@ export async function getCombinedStandings() {
 
         return {
             ...standing,
-            image: matchingDriver ? matchingDriver.driverImage : null,
-            teamColor: matchingDriver ? matchingDriver.teamColor : null
+            image: matchingDriver ? matchingDriver.driverImage : './images/placeholderImage.png',
+            teamColor: matchingDriver ? matchingDriver.teamColor : "5b5b5b"
         };
 
     });

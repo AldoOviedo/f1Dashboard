@@ -37,6 +37,11 @@
     justify-items: center;
     gap: 40px;
 }
+.auto-driver-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
 
 .driver-race-grid-main {
 }
@@ -68,17 +73,17 @@
     z-index: 0;
 }
 
-.driver-name,
-.driver-team {
+.-auto-driver-name,
+.-auto-driver-team {
     position: relative;
     z-index: 1;
 }
 
-.driver-card {
+.auto-driver-card {
     isolation: isolate;   /* the card becomes its own layering context */
 }
 
-.driver-number {
+.auto-driver-number {
     z-index: -1;          /* behind everything inside the card */
 }
 
